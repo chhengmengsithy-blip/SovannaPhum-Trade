@@ -1,0 +1,16 @@
+node_modules
+dist
+dist-server
+server/data
+.env
+.neon
+*.local
+*.tsbuildinfo
+__pycache__
+*.pyc
+artifacts/logs/
+artifacts/reports/*.json
+artifacts/screenshots/
+cookies*.txt
+server*.log
+shot-*.png

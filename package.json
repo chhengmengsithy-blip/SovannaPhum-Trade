@@ -1,0 +1,58 @@
+{
+  "name": "sovannaphumtrade-platform",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.20.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "server": "node server/index.ts",
+    "server:watch": "node --watch server/index.ts",
+    "dev:all": "node scripts/dev.mjs",
+    "python:research": "python python/research_service.py",
+    "start": "node server/index.ts",
+    "start:prod": "node scripts/startProd.mjs",
+    "db:migrate": "node scripts/migrateDatabase.ts",
+    "db:import:sqlite": "node scripts/migrateSqliteToPostgres.ts",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "tsc -b && vite build",
+    "typecheck:backend": "tsc -p tsconfig.server.json",
+    "build:backend": "npm run typecheck:backend && node scripts/buildServer.mjs",
+    "test:v1": "node --test tests/v1Engine.test.ts tests/v1Store.test.ts",
+    "test:v2": "node --test tests/v2Engine.test.ts tests/v2Store.test.ts",
+    "test:v3": "node --test tests/v3Engine.test.ts tests/v3Store.test.ts",
+    "test:market": "node --test tests/marketSession.test.ts",
+    "test:scanner": "node --test tests/scannerPlan.test.ts",
+    "test:python": "python -m unittest python/test_research_service.py",
+    "backtest:v3": "node scripts/backtestV3.ts",
+    "verify:v3": "node scripts/verifyV3Gates.ts",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lightweight-charts": "^5.2.1",
+    "lucide-react": "^0.468.0",
+    "pg": "^8.23.1",
+    "qrcode": "^1.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.5",
+    "ws": "^8.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/pg": "^8.23.1",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/ws": "^8.18.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "esbuild": "^0.25.12",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16",
+    "typescript": "~5.6.3",
+    "vite": "^6.0.1"
+  }
+}
